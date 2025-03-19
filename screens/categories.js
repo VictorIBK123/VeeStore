@@ -7,7 +7,8 @@ export default function Categories(){
             <View style={{flex:1, marginVertical:15}}>
                 <ExpoStatusBar backgroundColor="black" style="light" />
                 <FlatList 
-                    contentContainerStyle={{flex:1,alignItems:'center'}}
+                    style={{flex:1}}
+                    contentContainerStyle={{alignItems:'center'}}
                     numColumns={2}
                     data={categories}
                     renderItem={({item})=>{
