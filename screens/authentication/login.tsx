@@ -66,7 +66,7 @@ const loginSchema= Yup.object().shape({
               {touched.password && !errors.password && <Text style={styles.valid}>Password rules passed</Text>}
             </View>
             <View style={{flexDirection:'row-reverse'}}>
-              <TouchableOpacity disabled={signing} onPress={handleSubmit} style={{backgroundColor:'#2e64d1', padding:4, borderRadius:5}}>
+              <TouchableOpacity disabled={signing} onPress={()=>{handleSubmit()}} style={{backgroundColor:'#2e64d1', padding:4, borderRadius:5}}>
                 <Text style={{fontSize:16, color:'white'}}>Proceed</Text>
               </TouchableOpacity>
             </View>

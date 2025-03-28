@@ -1,6 +1,6 @@
 import { View, Text, FlatList,TouchableOpacity,Image, useWindowDimensions } from "react-native"
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar"
-import { categories } from "../categories_data"
+import { categories } from "../data/categories_data"
 export default function Categories(){
     const {height, width} = useWindowDimensions()
     return (
