@@ -6,6 +6,7 @@ import Signup from "./screens/authentication/signup";
 import Home from "./screens/home";
 import Categories from "./screens/categories"; 
 import ProductDetails from './screens/product_details';
+import ProductDataComp from './screens/categoryproducts';
 
 export default function App(){
       const stack = createStackNavigator()
@@ -16,6 +17,7 @@ export default function App(){
         <stack.Screen component={Signup} name="signup" options={{title: 'Sign Up', headerShown:false, }} />
         <stack.Screen component={Home} name="home" options={{title: 'VeeStore', headerTitleAlign:'center',headerShown:false }} />
         <stack.Screen component={ProductDetails} name="pd" options={{title: 'Details', headerTitleAlign:'center',headerShown:true}} />
+        <stack.Screen component={ProductDataComp} name ='productsdata' options={{title: 'Details', headerTitleAlign:'center',headerShown:true}} />
       </stack.Navigator>
     </NavigationContainer>
   )

@@ -14,7 +14,7 @@ import Header from "../components/HomeScreen/screenheader";
 import { data } from "../data/carouseldata";
 import ElectronicsComp from "../components/HomeScreen/electronicproducts";
 
-export default function Home({navigation}){
+export default function Home({navigation, route}){
     var i = 0
     const [search, setSearch] = useState(false)
     const {height, width} = Dimensions.get('window')
@@ -69,11 +69,11 @@ export default function Home({navigation}){
         renderItem={()=>(<></>)}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={()=>(
-            <View style={{marginTop:5, flex:1}}>
+            <View style={{marginTop:5, flex:1, backgroundColor:'#eeeeff'}}>
             <ExpoStatusBar backgroundColor="black" style="light" />
             {!search && <View>
                 <CarouselComp data={data}  />
-                <CategoriesComp categories={categories} />
+                <CategoriesComp navigation={navigation} route={route} categories={categories} />
                 <TrendingComp navigation={navigation} trending={trending} />
                 <ElectronicsComp navigation={navigation} electronics={electronics} />
             </View>

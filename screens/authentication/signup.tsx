@@ -218,7 +218,7 @@ const proceedFunc=()=>{
           <View style={{flex:1/2}}>
             <Text style={{fontSize: 17,marginTop:10}}>Re-enter</Text>
             <View style={{alignItems:'center',flexDirection:'row',marginTop:10,borderWidth: 1, borderColor: 'white', padding:5,backgroundColor:'#00000055'}}>
-              <TextInput onBlur={()=>setConfirmBlurred(true)} value={confirm} onChangeText={(text)=>{updateData(text, 'confirm')}} secureTextEntry={true} style={{color:'white',eight:'100%', width:'100%'}}/>
+              <TextInput onBlur={()=>setConfirmBlurred(true)} value={confirm} onChangeText={(text)=>{updateData(text, 'confirm')}} secureTextEntry={true} style={{color:'white',height:'100%', width:'100%'}}/>
             </View>
               {confirmBlurred && !confirmValidated &&  <Text style={{color:'red'}}>password does not match</Text>}
           </View>

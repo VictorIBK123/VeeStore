@@ -21,9 +21,6 @@ const SideMenu: React.FC<props> =({headHeight, animatedSideStyle})=>{
             <TouchableOpacity style={styles.sideMenuTextContainer}>
                 <Text style={styles.sideMenuText}>{`>    Cart`}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.sideMenuTextContainer}>
-                <Text style={styles.sideMenuText}>{`>    Wishlist`}</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={[styles.sideMenuTextContainer, {}]}>
                 <Text style={styles.sideMenuText}>{`>    Orders`}</Text>
             </TouchableOpacity>
