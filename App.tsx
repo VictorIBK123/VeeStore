@@ -12,7 +12,7 @@ export default function App(){
       const stack = createStackNavigator()
   return (
     <NavigationContainer>
-      <stack.Navigator initialRouteName="home">
+      <stack.Navigator initialRouteName="login">
         <stack.Screen component={Login} name="login" options={{title: 'Login', headerShown:false}} />
         <stack.Screen component={Signup} name="signup" options={{title: 'Sign Up', headerShown:false, }} />
         <stack.Screen component={Home} name="home" options={{title: 'VeeStore', headerTitleAlign:'center',headerShown:false }} />

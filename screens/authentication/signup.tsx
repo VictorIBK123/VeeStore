@@ -75,7 +75,7 @@ export default function Signup({navigation}){
   }
     
 
-const updateData=(value, type)=>{
+const updateData=(value:string, type: string)=>{
   switch (type) {
     case 'email':
       if (!value.includes(' ') && value.includes('@') && value.includes('.com')){
@@ -114,7 +114,7 @@ const updateData=(value, type)=>{
       setUsername(value)
       break;
     case 'phone':
-      if ((value.length==10 && value[0]!=0) || (value.length==11 && value[0]==0)){
+      if ((value.length==10 && value[0]!='0') || (value.length==11 && value[0]=='0')){
         setPhoneValidated(true)
       }
       else{
@@ -169,22 +169,22 @@ const proceedFunc=()=>{
           <Text style={{textTransform:'capitalize', fontSize:20,fontWeight:'bold', textAlign:'center', color:'black'}}>Sign Up</Text><TouchableOpacity onPress={()=>{navigation.navigate('login')}} style={{alignSelf:'flex-end'}}><Text style={{color:'blue', textDecorationLine:'underline', paddingLeft:10}}>or Log in</Text></TouchableOpacity>
         </View>
         <Text style={{fontSize: 17,marginTop:10}}>E-mail</Text>
-        <View style={{alignItems:'center',flexDirection:'row',marginTop:10,borderWidth: 1, borderColor: 'white', padding:5,backgroundColor:'#00000055'}}>
-          <TextInput onBlur={()=>setEmailBlurred(true)} value={email} onChangeText={(text)=>{updateData(text, 'email')}} keyboardType='email-address' style={{color:'white',height:'100%', width:'100%'}}/>
+        <View style={styles.textInputsContainers}>
+          <TextInput onBlur={()=>setEmailBlurred(true)} value={email} onChangeText={(text)=>{updateData(text, 'email')}} keyboardType='email-address' style={styles.textInputs}/>
         </View>
         {emailBlurred && !emailValidated && <Text style={{color:'red'}}>email is incorrect</Text>}
         <View style={{flexDirection:'row'}}>
           <View style={{flex:1/2, paddingRight:5}}>
             <Text style={{ fontSize: 17,marginTop:10}}>First Name</Text>
-            <View style={{alignItems:'center',flexDirection:'row', marginTop:10,borderWidth: 1, borderColor: 'white', padding:5, backgroundColor:'#00000055',}}>
-              <TextInput onBlur={()=>setFNameBlurred(true)} value={fName} onChangeText={(text)=>{updateData(text, 'firstname')}} style={{color:'white', height:'100%', width:'100%'}}/>
+            <View style={styles.textInputsContainers}>
+              <TextInput onBlur={()=>setFNameBlurred(true)} value={fName} onChangeText={(text)=>{updateData(text, 'firstname')}} style={styles.textInputs}/>
             </View>
             {fNameBlurred && !fNameValidated && <Text style={{color:'red'}}>Length must be at least 2</Text>}
           </View>
           <View style={{flex:1/2}}>
             <Text style={{ fontSize: 17,marginTop:10}}>Last Name</Text>
-            <View style={{alignItems:'center',flexDirection:'row', marginTop:10,borderWidth: 1, borderColor: 'white', padding:5, backgroundColor:'#00000055',}}>
-              <TextInput onBlur={()=>setLNameBlurred(true)} value={lName} onChangeText={(text)=>{updateData(text, 'lastname')}} style={{color:'white', height:'100%', width:'100%'}}/>
+            <View style={styles.textInputsContainers}>
+              <TextInput onBlur={()=>setLNameBlurred(true)} value={lName} onChangeText={(text)=>{updateData(text, 'lastname')}} style={styles.textInputs}/>
             </View>
             {lNameBlured && !lNameValidated && <Text style={{color:'red'}}>Length must be at least 2</Text>}
           </View>
@@ -193,15 +193,15 @@ const proceedFunc=()=>{
         <View style={{flexDirection:'row'}}>
           <View style={{flex:1/2, paddingRight:5}}>
             <Text style={{ fontSize: 17,marginTop:10}}>Username</Text>
-            <View style={{alignItems:'center',flexDirection:'row', marginTop:10,borderWidth: 1, borderColor: 'white', padding:5, backgroundColor:'#00000055',}}>
-              <TextInput onBlur={()=>setUserNameBlurred(true)} value={username} onChangeText={(text)=>{updateData(text, 'username')}} style={{color:'white', height:'100%', width:'100%'}}/>
+            <View style={styles.textInputsContainers}>
+              <TextInput onBlur={()=>setUserNameBlurred(true)} value={username} onChangeText={(text)=>{updateData(text, 'username')}} style={styles.textInputs}/>
             </View>
             {userNameBlurred && !userNameValidated && <Text style={{color:'red'}}>Length must be at least 2 and must not contain spaces</Text>}
           </View>
           <View style={{flex:1/2}}>
             <Text style={{ fontSize: 17,marginTop:10}}>Phone</Text>
-            <View style={{alignItems:'center',flexDirection:'row', marginTop:10,borderWidth: 1, borderColor: 'white', padding:5, backgroundColor:'#00000055',}}>
-              <TextInput onBlur={()=>setPhoneBlurred(true)} value={phone} onChangeText={(text)=>{updateData(text, 'phone')}} keyboardType="numeric"  style={{color:'white', height:'100%', width:'100%'}}/>
+            <View style={styles.textInputsContainers}>
+              <TextInput onBlur={()=>setPhoneBlurred(true)} value={phone} onChangeText={(text)=>{updateData(text, 'phone')}} keyboardType="numeric"  style={styles.textInputs}/>
             </View>
             {phoneBlurred && !phoneValidated && <Text style={{color:'red'}}>Incorrect format</Text>}
           </View>
@@ -210,15 +210,15 @@ const proceedFunc=()=>{
         <View style={{flexDirection:'row'}}>
           <View style={{flex:1/2, paddingRight:5}}>
             <Text style={{ fontSize: 17,marginTop:10}}>Password</Text>
-            <View style={{alignItems:'center',flexDirection:'row', marginTop:10,borderWidth: 1, borderColor: 'white', padding:5, backgroundColor:'#00000055',}}>
-              <TextInput onBlur={()=>setPasswordBlurred(true)} value={password} onChangeText={(text)=>{updateData(text, 'password')}} secureTextEntry={true}  style={{color:'white', height:'100%', width:'100%'}}/>
+            <View style={styles.textInputsContainers}>
+              <TextInput onBlur={()=>setPasswordBlurred(true)} value={password} onChangeText={(text)=>{updateData(text, 'password')}} secureTextEntry={true}  style={styles.textInputs}/>
             </View>
             {passwordBlurred && !passwordValidated && <View><Text style={{color:'red'}}>{'Incorrect password format, must contain one of the special characters, !@#$%^&*90,.?":{}|<></>, must contain at least a digit and must not contain spaces'}</Text></View>}
           </View>
           <View style={{flex:1/2}}>
             <Text style={{fontSize: 17,marginTop:10}}>Re-enter</Text>
-            <View style={{alignItems:'center',flexDirection:'row',marginTop:10,borderWidth: 1, borderColor: 'white', padding:5,backgroundColor:'#00000055'}}>
-              <TextInput onBlur={()=>setConfirmBlurred(true)} value={confirm} onChangeText={(text)=>{updateData(text, 'confirm')}} secureTextEntry={true} style={{color:'white',height:'100%', width:'100%'}}/>
+            <View style={styles.textInputsContainers}>
+              <TextInput onBlur={()=>setConfirmBlurred(true)} value={confirm} onChangeText={(text)=>{updateData(text, 'confirm')}} secureTextEntry={true} style={styles.textInputs}/>
             </View>
               {confirmBlurred && !confirmValidated &&  <Text style={{color:'red'}}>password does not match</Text>}
           </View>
@@ -250,5 +250,20 @@ const styles = StyleSheet.create({
     width:'100%', 
     justifyContent:'center', 
     alignItems:'center',
+  },
+  textInputs:{
+    color:'white', 
+    height:'100%', 
+    width:'100%'
+  },
+  textInputsContainers:{
+    alignItems:'center',
+    flexDirection:'row',
+    marginTop:10,
+    borderWidth: 1, 
+    borderColor: 'white', 
+    padding:5,
+    backgroundColor:'#00000055',
+    borderRadius:3
   }
 })

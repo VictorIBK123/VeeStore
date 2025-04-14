@@ -98,12 +98,13 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     borderColor: 'white', 
     padding:10,
-    backgroundColor:'#00000055'
+    backgroundColor:'#00000055',
+    borderRadius:5
   },
   input:{
     color:'white', 
     height:'100%', 
-    width:'100%'
+    width:'100%',
   },
   imgBackground:{
     height:'100%', 

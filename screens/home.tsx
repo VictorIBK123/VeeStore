@@ -13,6 +13,7 @@ import SearchModeComp from "../components/HomeScreen/searchmode";
 import Header from "../components/HomeScreen/screenheader";
 import { data } from "../data/carouseldata";
 import ElectronicsComp from "../components/HomeScreen/electronicproducts";
+import SportsComp from "../components/HomeScreen/sports";
 
 export default function Home({navigation, route}){
     var i = 0
@@ -22,6 +23,7 @@ export default function Home({navigation, route}){
     const [headHeight, setHeadHeight] = useState(null)
     const [trending, setTrending]= useState([])
     const [electronics, setElectronics] = useState([])
+    const [sports, setSports] = useState([])
     const detailBottom = useSharedValue(-(height-10))
     const header = useRef()
     useEffect(()=>{
@@ -29,16 +31,22 @@ export default function Home({navigation, route}){
             const db = getFirestore(app)
             const querySnapshot = await getDocs(collection(db, "trending_products"));
             const querySnapshot1 = await getDocs(collection(db, "electronics"));
+            const querySnapshot2 = await getDocs(collection(db, "sports"));
             var trendingData= []
             var electronicsData =[]
+            var sportsData =[]
             querySnapshot.forEach((doc)=>{
                 trendingData.push({key: `${doc.id}`, name:doc.data().name,description:doc.data().description, stock_quantity:doc.data().stock_quantity, price:doc.data().price, img_url:(doc.data().img_url)})
             })
             querySnapshot1.forEach((doc)=>{
                 electronicsData.push({key: `${doc.id}`, name:doc.data().name,description:doc.data().description, stock_quantity:doc.data().stock_quantity, price:doc.data().price, img_url:(doc.data().img_url)})
             })
+            querySnapshot2.forEach((doc)=>{
+                sportsData.push({key: `${doc.id}`, name:doc.data().name,description:doc.data().description, stock_quantity:doc.data().stock_quantity, price:doc.data().price, img_url:(doc.data().img_url)})
+            })
             setElectronics(electronicsData)
             setTrending(trendingData)
+            setSports(sportsData)
         }
         try{
             getData()
@@ -76,6 +84,7 @@ export default function Home({navigation, route}){
                 <CategoriesComp navigation={navigation} route={route} categories={categories} />
                 <TrendingComp navigation={navigation} trending={trending} />
                 <ElectronicsComp navigation={navigation} electronics={electronics} />
+                <SportsComp navigation={navigation} sports={sports} />
             </View>
             }
             {search && <SearchModeComp setSearch={setSearch} width={width}/>}
